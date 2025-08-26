@@ -1,4 +1,4 @@
-import { Form, Formik } from "formik";
+import { Field, Form, Formik } from "formik";
 import React from "react";
 
 const FormikForm = () => {
@@ -6,7 +6,26 @@ const FormikForm = () => {
     <div>
       <Formik>
         {(formik) => {
-          return <Form></Form>;
+          return (
+            <Form>
+              <Field>
+                {({ field, form, meta }) => {
+                  return (
+                    <div>
+                      <label htmlFor="firstName">First Name</label>
+                      <input
+                        type="text"
+                        name="firstName"
+                        id="firstName"
+                        value=""
+                        onChange=""
+                      />
+                    </div>
+                  );
+                }}
+              </Field>
+            </Form>
+          );
         }}
       </Formik>
     </div>
