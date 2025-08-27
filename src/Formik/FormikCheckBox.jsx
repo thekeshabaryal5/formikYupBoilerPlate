@@ -14,11 +14,14 @@ const FormikCheckBox = ({ name, label, required, onChange, ...props }) => {
             onChange={onChange ? onChange : field.onChange}
             checked={field.value || false}
           />
-          <label htmlFor={name}>{label || "Yes, I live in Kathmandu"}</label>
+          <label htmlFor={name}>
+            {label}
+            {required ? <span>*</span> : null}
+          </label>
 
           {/* Show error if exists */}
           {meta.touched && meta.error ? (
-            <div style={{ color: "red", fontSize: "12px" }}>{meta.error}</div>
+            <div style={{ color: "red" }}>{meta.error}</div>
           ) : null}
         </div>
       )}

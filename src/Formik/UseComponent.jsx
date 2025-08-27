@@ -3,6 +3,8 @@ import React from "react";
 import * as yup from "yup";
 import FormikInput from "./FormikInput";
 import FormikRadio from "./FormikRadio";
+
+
 const UseComponent = () => {
   const initialValues = {
     fullName: "",
@@ -35,9 +37,9 @@ const UseComponent = () => {
     age: yup.number().required("Age is required"),
     password: yup.string().required("Password is required"),
     gender: yup.string().required("Gender is required"),
-    // isMarried: yup.boolean(),
-    // country: yup.string().required("Country is required"),
-    // description: yup.string(),
+    isMarried: yup.boolean(),
+    country: yup.string().required("Country is required"),
+    description: yup.string(),
   });
   return (
     <div>
@@ -104,7 +106,7 @@ const UseComponent = () => {
               {/* gender ends here */}
 
               {/* isMarried starts here */}
-              FormikCheckbox
+              <FormikCheckBox></FormikCheckBox>
               {/* isMarried ends here */}
 
               {/* country starts here */}
