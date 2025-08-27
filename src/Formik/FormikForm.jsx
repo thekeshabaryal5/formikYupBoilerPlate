@@ -82,13 +82,7 @@ const FormikForm = () => {
                 options={genderOptions}
               ></FormikRadio>
 
-              <FormikCheckbox
-                name="isMarried"
-                label="Is Married?"
-                onChange={(e) => {
-                  formik.setFieldValue("isMarried", e.target.checked);
-                }}
-              />
+              <FormikCheckbox name="isMarried" label="Is Married?" />
               {/* submit button starts here  */}
               <button type="submit">Submit</button>
               {/* submit button ends here */}
