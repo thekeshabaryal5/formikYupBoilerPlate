@@ -2,13 +2,22 @@ import { Field, Form, Formik } from "formik";
 import * as yup from "yup";
 import FormikInput from "./FormikInput";
 import FormikTextArea from "./FormikTextArea";
+import FormikSelect from "./FormikSelect";
 
 const FormikForm = () => {
   let initialValues = {
     firstName: "",
     lastName: "",
     description: "",
+    country: "nepal",
+    gender: "male",
+    isMarried: false,
   };
+  let countryOptions = [
+    { label: "Nepal", value: "nepal" },
+    { label: "India", value: "india" },
+    { label: "Pakistan", value: "pakistan" },
+  ];
   const handleSubmit = (value, other) => {
     console.log(value);
   };
@@ -47,8 +56,7 @@ const FormikForm = () => {
               ></FormikInput>
               {/* last name ends here  */}
 
-              {/* description starts here  */}
-  
+              {/* description starts here  */}    
               <FormikTextArea
                 name={"description"}
                 label="Description"
@@ -56,6 +64,13 @@ const FormikForm = () => {
               ></FormikTextArea>
               {/* description ends here  */}
 
+              {/* country selection options  */}
+              <FormikSelect
+                name="country"
+                label="Country"
+                required={true}
+                options={countryOptions}
+              ></FormikSelect>
               {/* submit button starts here  */}
               <button type="submit">Submit</button>
               {/* submit button ends here */}
