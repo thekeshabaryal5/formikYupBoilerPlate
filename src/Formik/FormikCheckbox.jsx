@@ -1,0 +1,29 @@
+import { Field } from "formik";
+import React from "react";
+
+const FormikCheckbox = ({ name, label, required, onChange, ...props }) => {
+  return (
+    <Field name={name}>
+      {({ field, meta }) => (
+        <div>
+          <input
+            {...field}
+            {...props}
+            type="checkbox"
+            id={name}
+            onChange={onChange ? onChange : field.onChange}
+            checked={field.value || false}
+          />
+          <label htmlFor={name}>{label || "Yes, I live in Kathmandu"}</label>
+
+          {/* Show error if exists */}
+          {meta.touched && meta.error ? (
+            <div style={{ color: "red", fontSize: "12px" }}>{meta.error}</div>
+          ) : null}
+        </div>
+      )}
+    </Field>
+  );
+};
+
+export default FormikCheckbox;
