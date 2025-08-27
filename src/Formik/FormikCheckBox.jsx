@@ -1,7 +1,7 @@
 import { Field } from "formik";
 import React from "react";
 
-const FormikCheckbox = ({ name, label, required, onChange, ...props }) => {
+const FormikCheckBox = ({ name, label, required, onChange, ...props }) => {
   return (
     <Field name={name}>
       {({ field, meta }) => (
@@ -26,4 +26,4 @@ const FormikCheckbox = ({ name, label, required, onChange, ...props }) => {
   );
 };
 
-export default FormikCheckbox;
+export default FormikCheckBox;
