@@ -3,6 +3,7 @@ import * as yup from "yup";
 import FormikInput from "./FormikInput";
 import FormikTextArea from "./FormikTextArea";
 import FormikSelect from "./FormikSelect";
+import FormikRadio from "./FormikRadio";
 
 const FormikForm = () => {
   let initialValues = {
@@ -17,6 +18,11 @@ const FormikForm = () => {
     { label: "Nepal", value: "nepal" },
     { label: "India", value: "india" },
     { label: "Pakistan", value: "pakistan" },
+  ];
+  let genderOptions = [
+    { label: "Male", value: "male" },
+    { label: "Female", value: "female" },
+    { label: "Other", value: "other" },
   ];
   const handleSubmit = (value, other) => {
     console.log(value);
@@ -45,7 +51,6 @@ const FormikForm = () => {
                 placeholder="e.g: Keshab"
               ></FormikInput>
               {/* first name ends here  */}
-
               {/* last name starts here  */}
               <FormikInput
                 name={"lastName"}
@@ -55,15 +60,13 @@ const FormikForm = () => {
                 placeholder="e.g Aryal"
               ></FormikInput>
               {/* last name ends here  */}
-
-              {/* description starts here  */}    
+              {/* description starts here  */}
               <FormikTextArea
                 name={"description"}
                 label="Description"
                 required={true}
               ></FormikTextArea>
               {/* description ends here  */}
-
               {/* country selection options  */}
               <FormikSelect
                 name="country"
@@ -71,6 +74,12 @@ const FormikForm = () => {
                 required={true}
                 options={countryOptions}
               ></FormikSelect>
+              <FormikRadio
+                name="gender"
+                label="Gender"
+                required={true}
+                options={genderOptions}
+              ></FormikRadio>
               {/* submit button starts here  */}
               <button type="submit">Submit</button>
               {/* submit button ends here */}
