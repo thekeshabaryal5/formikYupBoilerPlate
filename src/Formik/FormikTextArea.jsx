@@ -1,7 +1,7 @@
 import { Field } from "formik";
 import React from "react";
 
-const FormikInput = ({ name, label, type, onChange, required, ...props }) => {
+const FormikTextArea = ({ name, required, label, onChange, ...props }) => {
   return (
     <Field name={name}>
       {({ field, form, meta }) => {
@@ -10,14 +10,13 @@ const FormikInput = ({ name, label, type, onChange, required, ...props }) => {
             <label htmlFor={name}>
               {label || name} {required ? <span>*</span> : null}
             </label>
-            <input
-              {...field}
+            <textarea
               {...props}
-              type={type}
+              {...field}
+              name={name}
               id={name}
-              value={field.value}
               onChange={onChange || field.onChange}
-            />
+            ></textarea>
             {meta.touched && meta.error ? (
               <p style={{ color: "red" }}>{meta.error}</p>
             ) : (
@@ -30,4 +29,4 @@ const FormikInput = ({ name, label, type, onChange, required, ...props }) => {
   );
 };
 
-export default FormikInput;
+export default FormikTextArea;

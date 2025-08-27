@@ -1,5 +1,7 @@
 import { Field, Form, Formik } from "formik";
 import * as yup from "yup";
+import FormikInput from "./FormikInput";
+import FormikTextArea from "./FormikTextArea";
 
 const FormikForm = () => {
   let initialValues = {
@@ -26,57 +28,32 @@ const FormikForm = () => {
           return (
             <Form>
               {/* first name starts here  */}
-              <Field name="firstName">
-                {({ field, form, meta }) => {
-                  return (
-                    <div>
-                      <label htmlFor="firstName">First Name</label>
-                      <input type="text" id="firstName" {...field} />
-                      {meta.touched && meta.error ? (
-                        <p style={{ color: "red" }}>{meta.error}</p>
-                      ) : (
-                        ""
-                      )}
-                    </div>
-                  );
-                }}
-              </Field>
+              <FormikInput
+                name={"firstName"}
+                label={"First Name"}
+                type="text"
+                required={true}
+                placeholder="e.g: Keshab"
+              ></FormikInput>
               {/* first name ends here  */}
 
               {/* last name starts here  */}
-              <Field name="lastName">
-                {({ field, form, meta }) => {
-                  return (
-                    <div>
-                      <label htmlFor="lastName">Last Name</label>
-                      <input {...field} type="text" id="lastName" />
-                      {meta.touched && meta.error ? (
-                        <p style={{ color: "red" }}>{meta.error}</p>
-                      ) : (
-                        ""
-                      )}
-                    </div>
-                  );
-                }}
-              </Field>
+              <FormikInput
+                name={"lastName"}
+                label={"Last Name"}
+                type="text"
+                required={true}
+                placeholder="e.g Aryal"
+              ></FormikInput>
               {/* last name ends here  */}
 
               {/* description starts here  */}
-              <Field name="description">
-                {({ field, form, meta }) => {
-                  return (
-                    <div>
-                      <label htmlFor="description">Description</label>
-                      <input type="text" id="description" {...field} />
-                      {meta.touched && meta.error ? (
-                        <p style={{ color: "red" }}>{meta.error}</p>
-                      ) : (
-                        ""
-                      )}
-                    </div>
-                  );
-                }}
-              </Field>
+  
+              <FormikTextArea
+                name={"description"}
+                label="Description"
+                required={true}
+              ></FormikTextArea>
               {/* description ends here  */}
 
               {/* submit button starts here  */}
