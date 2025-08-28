@@ -4,7 +4,7 @@ import FormikInput from "./FormikInput";
 import FormikTextArea from "./FormikTextArea";
 import FormikSelect from "./FormikSelect";
 import FormikRadio from "./FormikRadio";
-import FormikCheckbox from "./FormikCheckbox";
+import FormikCheckBox from "./FormikCheckBox";
 
 const FormikForm = () => {
   let initialValues = {
@@ -82,7 +82,7 @@ const FormikForm = () => {
                 options={genderOptions}
               ></FormikRadio>
 
-              <FormikCheckbox name="isMarried" label="Is Married?" />
+              <FormikCheckBox name="isMarried" label="Is Married?" />
               {/* submit button starts here  */}
               <button type="submit">Submit</button>
               {/* submit button ends here */}

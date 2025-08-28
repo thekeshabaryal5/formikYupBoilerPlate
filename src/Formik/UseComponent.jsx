@@ -3,8 +3,9 @@ import React from "react";
 import * as yup from "yup";
 import FormikInput from "./FormikInput";
 import FormikRadio from "./FormikRadio";
-
-
+import FormikCheckBox from "./FormikCheckBox";
+import FormikSelect from "./FormikSelect";
+import FormikTextArea from "./FormikTextArea";
 const UseComponent = () => {
   const initialValues = {
     fullName: "",
@@ -31,11 +32,36 @@ const UseComponent = () => {
     console.log(value);
   };
   const validationSchema = yup.object({
-    fullName: yup.string().required("Full Name  is required"),
-    email: yup.string().required("Email is required"),
-    phoneNumber: yup.string().required("Phone Number is required"),
-    age: yup.number().required("Age is required"),
-    password: yup.string().required("Password is required"),
+    fullName: yup
+      .string()
+      .required("Full Name  is required")
+      .min(10, "Full Name must be minimum 10 Characters long")
+      .max(20, "Full Name can be at most 20 characters")
+      .matches(
+        /^[a-zA-Z]+(?: [a-zA-Z]+)*$/,
+        "Only alphabet and space is allowed"
+      ),
+    email: yup
+      .string()
+      .required("Email is required")
+      .email("Invalid email address"),
+
+    phoneNumber: yup
+      .string()
+      .required("Phone number is required")
+      .matches(/^(98|97)[0-9]{8}$/, "Invalid Nepali phone number"),
+    age: yup
+      .number()
+      .required("Age is required")
+      .min(18, "Age must be at least 18 years"),
+    password: yup
+      .string()
+      .required("Password is required")
+      .min(8, "Password must be at least 8 characters")
+      .matches(
+        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
+        "Password must contain at least one uppercase, one lowercase, one number, and one special character"
+      ),
     gender: yup.string().required("Gender is required"),
     isMarried: yup.boolean(),
     country: yup.string().required("Country is required"),
@@ -106,13 +132,26 @@ const UseComponent = () => {
               {/* gender ends here */}
 
               {/* isMarried starts here */}
-              <FormikCheckBox></FormikCheckBox>
+              <FormikCheckBox
+                label="Is Married"
+                name="isMarried"
+              ></FormikCheckBox>
               {/* isMarried ends here */}
 
               {/* country starts here */}
+              <FormikSelect
+                name="country"
+                label="Country"
+                required={true}
+                options={countryOptions}
+              ></FormikSelect>
               {/* country ends here */}
 
               {/* description starts here */}
+              <FormikTextArea
+                name="description"
+                label="Description"
+              ></FormikTextArea>
               {/* description ends here */}
 
               {/* submit button */}
@@ -126,16 +165,3 @@ const UseComponent = () => {
 };
 
 export default UseComponent;
-
-/* 
-form
-email       required   ----> input:email
-password    required    ----> input:p/w
-fullName    required    ----> input:text
-isMarried               ---> checkbox
-country     required    ----> select
-gender      required    ----> radio
-description             ----> textarea
-phoneNumber required -----> number
-age         required   -----> number
-*/
